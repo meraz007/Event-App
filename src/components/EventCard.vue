@@ -5,7 +5,9 @@
         <div class="card-body">
           <h5 class="card-title">{{ event.title}}</h5>
           <p class="card-text">@ {{ event.time }} on {{ event.date }}</p>
-          <a href="#" class="btn btn-primary">Deatils Here</a>
+          <router-link :to="{ path: '/event/'+ event.id }">
+            <a class="btn btn-info">Deatils Here</a>
+          </router-link>
         </div>
       </div>
     </div>

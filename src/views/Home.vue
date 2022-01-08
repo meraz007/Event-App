@@ -11,7 +11,7 @@ import EventCard from "@/components/EventCard.vue";
 import axios from 'axios'
 
 export default {
-  name: "Home",
+  name: "Home", 
   components: {
     EventCard,
   },
@@ -22,13 +22,10 @@ export default {
     },
     created(){
       axios
-        .get('https://my-json-server.typicode.com/meraz007/Event-App/events')
-        .then(response =>{
-          this.events=response.data
-        })
-        .catch(error =>{
-          console.log(error)
-        })
+      .get('https://my-json-server.typicode.com/meraz007/Event-App/events')
+      .then(response =>{
+        this.events=response.data
+      })
     }
 };
 </script>
