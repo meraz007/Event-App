@@ -1,34 +1,42 @@
 <template>
-  <div class="row justify-content-md-center">
-    <div class="col-md-4">
-      <div class="card my-4">
-        <div class="card-body">
-          <h5 class="card-title">{{ event.title}}</h5>
-          <p class="card-text">@ {{ event.time }} on {{ event.date }}</p>
-          <router-link :to="{ path: '/event/'+ event.id }">
-            <a class="btn btn-info">Deatils Here</a>
-          </router-link>
-        </div>
-      </div>
+  <router-link
+    class="event-link"
+    :to="{ name: 'EventDetails', params: { id: event.id } }"
+  >
+    <div class="event-card">
+      <span>@{{ event.time }} on {{ event.date }}</span>
+      <h4>{{ event.title }}</h4>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
 export default {
-  name: "EventCard",
-  props:{
-    event: Object
+  props: {
+    event: {
+      type: Object,
+      required: true
+    }
   }
-};
+}
 </script>
 
-
 <style scoped>
-.card:hover{
-     transform: scale(1.05);
-     transition-duration: 0.5s;
-  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+.event-card {
+  padding: 20px;
+  width: 250px;
+  cursor: pointer;
+  border: 1px solid #39495c;
+  margin-bottom: 18px;
 }
 
+.event-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+.event-link {
+  color: #2c3e50;
+  text-decoration: none;
+}
 </style>
